@@ -22,7 +22,7 @@ use onebone\economyapi\EconomyAPI;
 
 class ArmTheDev extends PluginBase implements Listener{
 
-	public $nomoney = TextFormat::RED . "you do not have enough money!"
+	public $nomoney = TextFormat::RED . "you do not have enough money!";
 	
 	public function onEnable(){
 		$this->getLogger()->info("ShopUI by ArmTheDev");
