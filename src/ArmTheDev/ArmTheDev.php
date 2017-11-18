@@ -12,6 +12,8 @@ use pocketmine\item\Item;
 use pocketmine\item\enchantment\Enchantment;
 #Event
 use pocketmine\event\Listener;
+#Commands
+use pocketmine\command\{Command, CommandSender, CommandExecutor, ConsoleCommandSender};
 #Entity
 use pocketmine\entity\{Entity, Effect};
 #Player
@@ -29,9 +31,14 @@ class ArmTheDev extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 	
-	public function onPlayerInteract(PlayerInteractEvent $event){
-		$player = $event->getPlayer();
-		$this->mainFrom($player);
+	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool{
+		$player = $sender->getPlayer();
+		switch ($cmd->getName()){
+			case "shopui":
+			$this->mainFrom($player);
+				break;
+		}
+		return true;
     }
     
 	public function mainFrom($player){
@@ -356,11 +363,3 @@ class ArmTheDev extends PluginBase implements Listener{
 			$form->sendToPlayer($player);
 	}
 }
-
-
-
-
-
-	
-	
-	
